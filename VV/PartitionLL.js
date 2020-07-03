@@ -46,8 +46,8 @@ reverseLinkedLst = (head) => {
   while (q) {
     tmp = q.next;
     q.next = p;
-    q = tmp;
     p = q;
+    q = tmp;
   }
   return p
 }
