@@ -23,4 +23,4 @@ class Solution:
 # var plusOne = function(digits) {
 #    return (BigInt(digits.map(n => n.toString()).join('')) + 1n).toString().split('').map(s => parseInt(s))
 # };
-# interesting note: this JS solution doesn't work with vanilla parseInt bc it is stored as 64 bit int, which has a max value of 6145390195186705000.
+# interesting note: this JS solution doesn't work with vanilla parseInt bc it is stored as 64 bit int, which has a max value of 6145390195186705000. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
