@@ -19,4 +19,8 @@ class Solution:
 #             return digits
         return list(map(int, list(str(int(''.join(list(map(str, digits)))) + 1))))
 
-# JS: return (parseInt(digits.map(n => n.toString()).join('')) + 1).toString().split('').map(s => parseInt(s))
+# JS: 
+# var plusOne = function(digits) {
+#    return (BigInt(digits.map(n => n.toString()).join('')) + 1n).toString().split('').map(s => parseInt(s))
+# };
+# interesting note: this JS solution doesn't work with vanilla parseInt bc it is stored as 64 bit int, which has a max value of 6145390195186705000.
