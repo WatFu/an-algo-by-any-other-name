@@ -10,7 +10,7 @@ class Node:
 
 class Solution:
     def flatten(self, head: 'Node') -> 'Node':
-# misunderstood problem, but interesting concurrent / threaded recursion tho i think maybe
+# misunderstood problem, but interesting recursion tho i think maybe
 
         # p, next_flag = head, False
         # next_head = q = Node(None)
