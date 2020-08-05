@@ -15,9 +15,7 @@ class WordDictionary:
         else:
             d = self.root
             for i in range(len(word)):
-                if word[i] in d:
-                    continue
-                else:
+                if not word[i] in d:
                     d[word[i]] = {}
                 d = d[word[i]]
         d['isWord'] = True
@@ -29,28 +27,24 @@ class WordDictionary:
         """
         flag = [False]
         
-        def bfs(curr_word, curr_d):
+        def dfs(curr_word, curr_d):
             if flag[0] == True:
                 return
             if not curr_word:
                 flag[0] = 'isWord' in curr_d
-            for i in range(len(curr_word)):
-                if curr_word[i] == '.':
-                    all_keys = curr_d.keys()
-                    for key in all_keys:
-                        if key == 'isWord':
-                            if i == len(curr_word) - 1:
-                                flag[0] == True
-                            continue
-                        else:
-                            return bfs(curr_word[i+1:], curr_d[key])
-                elif curr_word[i] in curr_d:
-                    curr_d = curr_d[curr_word[i]]
-                else:
+                return
+            if curr_word[0] == '.':
+                all_keys = list(curr_d.keys())
+                if len(all_keys) == 1 and all_keys[0] == 'isWord':
                     return
-
-            flag[0] = 'isWord' in curr_d
+                for key in all_keys:
+                    if key != 'isWord':
+                        dfs(curr_word[1:], curr_d[key])
+            elif curr_word[0] in curr_d:
+                dfs(curr_word[1:], curr_d[curr_word[0]])
+            else:
+                return
         
-        bfs(word, self.root)
+        dfs(word, self.root)
         
         return flag[0]
