@@ -1,3 +1,5 @@
+//this fails in case of .* being null
+
 function isMatch(text, pattern) {
   let t_pointer = 0;
   let p_pointer = 0;
