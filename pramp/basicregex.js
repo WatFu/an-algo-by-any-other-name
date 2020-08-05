@@ -5,10 +5,16 @@ function isMatch(text, pattern) {
   while (p_pointer < pattern.length) {
     if (pattern[p_pointer] === '.') {
       if (pattern[p_pointer + 1] === '*') {
-        return true;
+        let curr_letter = text[t_pointer];
+        while (text[t_pointer] === curr_letter) {
+          t_pointer += 1;
+        }
+        p_pointer += 2;
       }
-      t_pointer += 1;
-      p_pointer += 1;
+       else {
+        t_pointer += 1;
+        p_pointer += 1;
+       }
     } else if (pattern[p_pointer + 1] === '*') {
       while (text[t_pointer] === pattern[p_pointer]) {
         t_pointer += 1;
