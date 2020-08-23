@@ -76,4 +76,33 @@
 #         self.curr_query = next_query
 #         return flag
     
+class StreamChecker:
 
+    def __init__(self, words: List[str]):
+        self.root = {}
+        self.n = 0
+        self.search = ""
+        
+        for word in words:
+            self.n = max(len(word), self.n)
+            rev_word = word[::-1]
+            curr_dict = self.root
+            for letter in rev_word:
+                if not letter in curr_dict:
+                    curr_dict[letter] = {}
+                curr_dict = curr_dict[letter]
+            curr_dict['isWord'] = True
+        
+    def query(self, letter: str) -> bool:
+        self.search = letter + self.search
+        if len(self.search) > self.n:
+            self.search[:self.n]
+        curr_dict = self.root
+        for char in self.search:
+            if char in curr_dict:
+                if 'isWord' in curr_dict[char]:
+                    return True
+                curr_dict = curr_dict[char]
+            else:
+                break
+        return False
