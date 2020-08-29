@@ -1,6 +1,6 @@
 class Solution:
     def pancakeSort(self, A: List[int]) -> List[int]:
-        #sort to get last place into first then rotate all k
+        #sort to get last unsorted into first then rotate all up to last unsorted's expected index
         #only concern is that the act of flipping is very expensive, need to update k indexes every time
         
         self.h = {}
