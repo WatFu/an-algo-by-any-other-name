@@ -34,7 +34,7 @@ def fallingBlocks(matrix):
             if matrix[i][j] == 1 and (i, j) not in visited:
                 dfs((i, j))
                 for key in curr_lowest_row.keys():
-                    if curr_lowest_row[key] >= m - 1 or matrix[curr_lowest_row[key] + 1][key]:
+                    if curr_lowest_row[key] >= m - 1:
                         isValid = False
                         break
                 if isValid:
